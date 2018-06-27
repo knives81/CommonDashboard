@@ -13,7 +13,7 @@ import java.util.Date;
 
 public abstract class DataRow {
 
-	private static final SimpleDateFormat SDF = new SimpleDateFormat(ChartEntities.DATE_FORMAT);
+	private static final SimpleDateFormat SDF = new SimpleDateFormat(Chart.DATE_FORMAT);
 	
 	@Id
 	@Getter private String _id;
@@ -37,7 +37,7 @@ public abstract class DataRow {
 		
 		this.recordDate = recordDate;
 		
-		String inputToBaHashed = recordDate+entityId;
+		String inputToBaHashed = recordDate+entityId+configurationIndex;
 		_id = Hashing.md5().hashString(inputToBaHashed, StandardCharsets.UTF_8).toString();
 	}
 }
