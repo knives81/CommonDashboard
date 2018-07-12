@@ -60,5 +60,12 @@ public class DefectConf extends EntityConfAbstract {
     	}    	
     	return tagValues;
     }
+    public List<Integer> getConfPositionIndexes() {
+        List<Integer> confPositionIndexes = new ArrayList<>();
+        for (DefectNode node : defectNodes) {
+            confPositionIndexes.add(node.getIndex());
+        }
+        return confPositionIndexes;
+    }
 
 }

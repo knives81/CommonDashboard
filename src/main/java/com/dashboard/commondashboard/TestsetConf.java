@@ -42,10 +42,17 @@ public class TestsetConf extends EntityConfAbstract {
 
     public List<List<String>> getTags() {
     	List<List<String>> tagValues = new ArrayList<>();
-    	for(TestsetNode testsetNode : testsetNodes) {
-    		tagValues.add(testsetNode.getTags());
+    	for(TestsetNode node : testsetNodes) {
+    		tagValues.add(node.getTags());
     	}    	
     	return tagValues;
+    }
+    public List<Integer> getConfPositionIndexes() {
+        List<Integer> confPositionIndexes = new ArrayList<>();
+        for (TestsetNode node : testsetNodes) {
+            confPositionIndexes.add(node.getIndex());
+        }
+        return confPositionIndexes;
     }
     
 }
