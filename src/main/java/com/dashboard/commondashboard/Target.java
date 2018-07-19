@@ -4,12 +4,14 @@ package com.dashboard.commondashboard;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.ToString;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "domaincontroller",
     "project"
 })
+@ToString
 public class Target {
 
     @JsonProperty("domaincontroller")

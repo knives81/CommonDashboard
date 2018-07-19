@@ -21,15 +21,11 @@ public abstract class DataRow {
 	@Getter private String recordDate;
 	@Getter private Integer entityId;
 	@Getter private String status;
-	
-	
-	public DataRow(Integer configurationIndex, Integer entityId, String status) {
-		this(configurationIndex, entityId, status,new Date());
+
+	public DataRow(Integer configurationIndex, Integer entityId, String status, Date date,Target target, Entity.EntityType entity) {
+		this(configurationIndex,entityId,status,  SDF.format(date),target,entity);
 	}
-	public DataRow(Integer configurationIndex, Integer entityId, String status, Date date) {
-		this(configurationIndex,entityId,status,  SDF.format(date));
-	}
-	public DataRow(Integer configurationIndex, Integer entityId, String status, String recordDate) {
+	public DataRow(Integer configurationIndex, Integer entityId, String status, String recordDate, Target target, Entity.EntityType entity) {
 		super();
 		this.configurationIndex = configurationIndex;
 		this.entityId = entityId;
@@ -37,7 +33,7 @@ public abstract class DataRow {
 		
 		this.recordDate = recordDate;
 		
-		String inputToBaHashed = recordDate+entityId+configurationIndex;
+		String inputToBaHashed = recordDate+entityId.toString()+configurationIndex.toString()+target.toString()+entity.value();
 		_id = Hashing.md5().hashString(inputToBaHashed, StandardCharsets.UTF_8).toString();
 	}
 }
