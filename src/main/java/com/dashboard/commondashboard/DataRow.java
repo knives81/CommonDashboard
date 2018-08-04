@@ -35,5 +35,6 @@ public abstract class DataRow {
 		
 		String inputToBaHashed = recordDate+entityId.toString()+configurationIndex.toString()+target.toString()+entity.value();
 		_id = Hashing.md5().hashString(inputToBaHashed, StandardCharsets.UTF_8).toString();
+
 	}
 }

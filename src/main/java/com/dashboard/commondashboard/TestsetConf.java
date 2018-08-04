@@ -1,55 +1,33 @@
 
 package com.dashboard.commondashboard;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "tagNames",
-    "testsetNodes"
-})
 public class TestsetConf extends EntityConfAbstract {
 
-    @JsonProperty("tagNames")
-    private List<String> tagNames = null;
-    @JsonProperty("testsetNodes")
-    private List<TestsetNode> testsetNodes = null;
+    @Getter @Setter private List<String> tagNames = null;
+    @Getter @Setter private List<TestsetNode> nodes = null;
 
-    @JsonProperty("tagNames")
-    public List<String> getTagNames() {
-        return tagNames;
-    }
-
-    @JsonProperty("tagNames")
-    public void setTagNames(List<String> tagNames) {
-        this.tagNames = tagNames;
-    }
-
-    @JsonProperty("testsetNodes")
-    public List<TestsetNode> getTestsetNodes() {
-        return testsetNodes;
-    }
-
-    @JsonProperty("testsetNodes")
-    public void setTestsetNodes(List<TestsetNode> testsetNodes) {
-        this.testsetNodes = testsetNodes;
-    }
-
+    @JsonIgnore
     public List<List<String>> getTags() {
     	List<List<String>> tagValues = new ArrayList<>();
-    	for(TestsetNode node : testsetNodes) {
+    	for(TestsetNode node : nodes) {
     		tagValues.add(node.getTags());
     	}    	
     	return tagValues;
     }
+    @JsonIgnore
     public List<Integer> getConfPositionIndexes() {
         List<Integer> confPositionIndexes = new ArrayList<>();
-        for (TestsetNode node : testsetNodes) {
+        for (TestsetNode node : nodes) {
             confPositionIndexes.add(node.getIndex());
         }
         return confPositionIndexes;
