@@ -16,16 +16,17 @@ import java.util.List;
 public class Pianification {
 
     @Id @Getter String _id;
-    @Getter Integer tesetSetConfId;
+    @Getter Integer testSetConfId;
     @Getter List<TestPerDay> testPerDays;
 
-    public Pianification(Integer tesetSetConfId,List<TestPerDay> testPerDays) {
-        this.tesetSetConfId = tesetSetConfId;
+    public Pianification(Integer testSetConfId,List<TestPerDay> testPerDays) {
+        this.testSetConfId = testSetConfId;
         this.testPerDays = testPerDays;
-        _id = Hashing.md5().hashString(tesetSetConfId.toString(), StandardCharsets.UTF_8).toString();
+        _id = Hashing.md5().hashString(testSetConfId.toString(), StandardCharsets.UTF_8).toString();
     }
 
     @AllArgsConstructor
+    @ToString
     public static class TestPerDay {
         @Getter @Setter public String day;
         @Getter @Setter public Integer numOfTest;
