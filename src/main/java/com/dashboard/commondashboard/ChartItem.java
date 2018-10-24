@@ -16,15 +16,16 @@ import java.util.List;
 @ToString
 public class ChartItem {
 
-    @Getter @Setter private Integer confId;
-    @Getter @Setter private List<Integer> ids = null;
-    @Getter @Setter private String desc;
-    @Getter @Setter private List<String> tags = null;
-    @Getter @Setter private String chartType;
-    @Getter @Setter private String entityType;
-
-    @JsonIgnore @Getter @Setter private Boolean isVisible;
-    @JsonIgnore @Getter @Setter private List<String> usernames = null;
+    @JsonIgnore @Getter @Setter public String _id;
+    @Getter @Setter public Integer confId;
+    @Getter @Setter public List<Integer> ids = null;
+    @Getter @Setter public String desc;
+    @Getter @Setter public List<String> tags = null;
+    @Getter @Setter public String chartType;
+    @Getter @Setter public String entityType;
+    @JsonIgnore @Getter @Setter public Boolean isVisible;
+    @JsonIgnore @Getter @Setter public List<String> usernames = null;
+    @JsonIgnore @Getter @Setter public String _class;
 
 
 }
