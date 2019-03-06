@@ -12,6 +12,10 @@ public interface DataRowRepository extends MongoRepository<DataRow, String>{
 	
 	@Query("{_class: ?0 }")
 	List<DataRow> findEntities(String _class);
+
+	List<DataRow> deleteByRecordDateLessThan(String recordDate);
+
+
 	
 
 }
